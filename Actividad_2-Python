@@ -1,0 +1,99 @@
+#Número 1: Se aasigna un valor a la variable
+numero = 10
+
+#Número 2: Se imprime el valor de la varible "número"
+print("El número asignado a la variable número es: ", numero)
+
+"""
+Actividad de clase:
+Definir valores de variables e imprimirlas (sobre algún hobby).
+Usaras:
+- Enteros.
+- Booleanos
+- Caracteres
+Tiempo: 8
+"""
+print("Ingresa los datos solicitados acerca de tu(s) hobby(s):")
+cantidad_hobbys = int(input("¿Cuántos hobbys tienes?"))
+print("Ahora escribe cual es tu hobby favorito")
+hobby_favorito = input()
+print("¿Eres mexicano (responde con: si / no)?")
+answer = input()
+mexicano = True
+extranjero = False
+if answer == str("si"):
+    answer = mexicano
+    print("Tienes",cantidad_hobbys,"hobby(s). Tu hobby favorito es:",hobby_favorito,". ¿Eres Méxicano?",mexicano)
+else:
+    answer = extranjero
+    print("Tienes",cantidad_hobbys,"hobby(s). Tu hobby favorito es:",hobby_favorito,". ¿Eres Méxicano?",extranjero)
+
+""" SENTENCIA IF - ES UNA CONDICIÓN DE SENTENCIA """
+if numero < 100:
+    print("La variable número es menor que el 100")
+
+"""
+Actividad; definir 3 tipos de if.
+- Comparación de un número contra otro.
+- Ingresar a un lugar con
+"""
+
+numero = int(input("Ingresa un número:"))
+if numero < 10:
+    print("El número es menor que 10") # 1ro
+if numero == 10:
+    print("El número es igual a 10") # 2do
+if numero > 10:
+    print("El número es mayor que 10") # 3ro
+
+""" SENTENCIA IF - ELSE """
+if numero <= 20:
+    print("El número es menor o igual a 20")
+else:
+    print("El número es mayor que 20")
+
+"""
+Actividad: Crear un IF-ELSE al azar
+"""
+
+if numero == 1:
+    print("Manzana")
+else:
+    print("Mango")
+
+"""
+Investiguen un juego en Python a base de IF-ELSE
+Copialo y pégalo aquí
+Comenta cada línea para que interpretes su funcionamiento
+"""
+
+import random
+
+def adivina_el_numero():
+    # Generar un número aleatorio entre 1 y 100
+    numero_secreto = random.randint(1, 100)
+    intentos = 0
+    adivinado = False
+
+    print("¡Bienvenido a 'Adivina el número'!")
+    print("He elegido un número entre 1 y 100. ¿Puedes adivinarlo?")
+
+    while not adivinado:
+        # Pedir al jugador que ingrese un número
+        try:
+            guess = int(input("Introduce tu suposición: "))
+            intentos += 1
+
+            # Comparar el número ingresado con el número secreto
+            if guess < numero_secreto:
+                print("El número es mayor. ¡Intenta de nuevo!")
+            elif guess > numero_secreto:
+                print("El número es menor. ¡Intenta de nuevo!")
+            else:
+                adivinado = True
+                print(f"¡Felicidades! Adivinaste el número en {intentos} intentos.")
+        except ValueError:
+            print("Por favor, ingresa un número válido.")
+
+# Ejecutar el juego
+adivina_el_numero()
