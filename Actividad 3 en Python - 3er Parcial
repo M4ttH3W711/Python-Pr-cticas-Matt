@@ -1,0 +1,17 @@
+print("CALCULADORA DE NÓMINA")
+print("")
+print("¿Cuál es el pago que recibes por un día de trabajo?")
+pago_diario = int(input("pago dirario..."))
+print("¿Cuántas horas extra has hecho?")
+extra = int(input("horas extras..."))
+print("¿Cuántas faltas has cometido?")
+faltas = int(input("faltas cometidas..."))
+print("")
+subtotal_dias = pago_diario * 30
+subtotal_extra = pago_diario * 2 * extra
+subtotal_faltas = pago_diario * faltas
+total = subtotal_dias + subtotal_extra - subtotal_faltas
+print("Subtotal de pago por días =",(subtotal_dias))
+print("Subtotal de pago por horas extras =",(subtotal_extra))
+print("Subtotal de descuento por faltas =",(subtotal_faltas))
+print("Total de pago mensual =",(total))
