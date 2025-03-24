@@ -1,0 +1,96 @@
+"""Crea un sistema de facturación en Python que permita a un usuario ingresar los detalles de una compra y genere una factura detallada con los siguientes elementos:
+
+Requisitos:
+	1.	Solicitar al usuario:
+	•	Nombre del cliente
+	•	Lista de productos (nombre, cantidad y precio unitario)
+	•	Aplicar descuentos opcionales
+	•	Aplicar impuestos (IVA del 16%)
+	2.	Calcular:
+	•	Subtotal (sin impuestos ni descuentos)
+	•	Descuento aplicado (si lo hay)
+	•	Impuestos
+	•	Total a pagar
+	3.	Imprimir la factura con formato organizado en la terminal.
+"""
+
+print("\nIngrese los datos solicitados")
+name = input("\nNombre: ")
+
+def calcular_compra():
+    # Preguntar cuántos productos compró el cliente
+    num_productos = int(input("\n¿Cuántos productos compraste? "))
+
+    # Inicializar listas para guardar los valores de cada producto
+    valores_productos = []
+    subtotales_sin_iva = []
+    subtotales_con_descuento = []
+    impuestos_iva = []
+
+    # Iterar para cada producto
+    for i in range(num_productos):
+        print(f"\nProducto {i + 1}:")
+        nombre = input("Nombre del producto: ")
+        cantidad = int(input(f"Cantidad de {nombre}: "))
+        precio_unitario = float(input(f"Precio unitario de {nombre}: "))
+        descuento = float(input("Ingrese el descuento del producto (1 - 100): "))
+
+        # Calcular el subtotal sin descuento
+        subtotal_simple = cantidad * precio_unitario
+
+        # Calcular el descuento aplicado
+        descuento_porcentaje = descuento / 100
+        descuento_aplicado = subtotal_simple * descuento_porcentaje
+        subtotal_con_descuento = subtotal_simple - descuento_aplicado
+
+        # Calcular el IVA (16% sobre el subtotal con descuento)
+        impuesto_iva = subtotal_con_descuento * 0.16
+        total_con_iva = subtotal_con_descuento + impuesto_iva
+
+        # Guardar los valores en las listas
+        valores_productos.append((nombre, cantidad, total_con_iva))
+        subtotales_sin_iva.append(subtotal_simple)
+        subtotales_con_descuento.append(subtotal_con_descuento)
+        impuestos_iva.append(impuesto_iva)
+
+        # Mostrar el valor del producto actual
+        print(f"El valor de {cantidad} {nombre}(s) es (descuento e IVA aplicados): ${total_con_iva:.2f}")
+
+    # Mostrar la factura
+    print("\n------------------------------FACTURA------------------------------")
+    print("\nNombre del cliente:", name)
+
+    # Subtotal sin IVA ni descuentos
+    print("\nSubtotal (sin IVA ni descuentos):")
+    print("")
+    for i, producto in enumerate(valores_productos):
+        nombre, cantidad, _ = producto
+        print(f"{nombre} x{cantidad}: ${subtotales_sin_iva[i]:.2f}")
+
+    # Subtotal con descuentos aplicados
+    print("\nSubtotal (con descuentos aplicados):")
+    print("")
+    for i, producto in enumerate(valores_productos):
+        nombre, cantidad, _ = producto
+        print(f"{nombre} x{cantidad}: ${subtotales_con_descuento[i]:.2f}")
+
+    # Impuestos por cada producto
+    print("\nImpuestos (por cada producto):")
+    print("")
+    for i, producto in enumerate(valores_productos):
+        nombre, cantidad, _ = producto
+        print(f"{nombre} x{cantidad}: ${impuestos_iva[i]:.2f}")
+
+    # Compras realizadas (IVA y descuentos aplicados)
+    print("\nSubtotal (IVA y descuentos aplicados):")
+    print("")
+    for producto in valores_productos:
+        nombre, cantidad, valor = producto
+        print(f"{nombre} x{cantidad}: ${valor:.2f}")
+
+    # Calcular el total de la compra
+    total_compra = sum(valor for _, _, valor in valores_productos)
+    print(f"\nTotal de la compra: ${total_compra:.2f}")
+
+# Ejecutar la función
+calcular_compra()
