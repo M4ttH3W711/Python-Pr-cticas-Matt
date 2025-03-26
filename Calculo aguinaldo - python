@@ -1,0 +1,4 @@
+salario_diario = int(input("¿Cuál es tu salario diario? "))
+dias_trabajados_x_año = int(input("¿Cuántos días has trabajado este año? "))
+aguinaldo = (((15/365) * dias_trabajados_x_año) * salario_diario)
+print("Tu aguinaldo es de $",round(aguinaldo))
