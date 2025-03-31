@@ -1,0 +1,48 @@
+def calcular_costo_hamburguesa():
+    # --- Costos Directos (por hamburguesa, con IVA incluido) ---
+    pan = 5.80         # $5.00 + 16% IVA
+    carne = 17.40      # $15.00 + IVA (100g)
+    queso = 3.48       # $3.00 + IVA
+    lechuga = 1.74     # $1.50 + IVA
+    tomate = 2.32      # $2.00 + IVA
+    cebolla = 1.16     # $1.00 + IVA
+    salsa = 2.90       # $2.50 + IVA
+    empaque = 3.48     # $3.00 + IVA
+    
+    costo_directo = pan + carne + queso + lechuga + tomate + cebolla + salsa + empaque
+    
+    # --- Costos Indirectos Mensuales (sin IVA) ---
+    alquiler = 15000.0     # Costo mensual promedio en CDMX
+    energia = 3000.0       # Luz/gas para un local pequeño
+    salarios = 20000.0     # 2 empleados de tiempo completo
+    
+    # --- Distribución de costos indirectos ---
+    hamburguesas_mes = 1000  # Número estimado de ventas
+    costo_indirecto_por_hamburguesa = (alquiler + energia + salarios) / hamburguesas_mes
+    
+    # --- Costo Total ---
+    costo_total = costo_directo + costo_indirecto_por_hamburguesa
+    
+    # --- Resultados ---
+    print("--- Costo por Hamburguesa (Valores Automáticos) ---\n")
+    print("** Costos Directos (con IVA): **")
+    print(f"- Pan: ${pan:.2f}")
+    print(f"- Carne (100g): ${carne:.2f}")
+    print(f"- Queso: ${queso:.2f}")
+    print(f"- Lechuga: ${lechuga:.2f}")
+    print(f"- Tomate: ${tomate:.2f}")
+    print(f"- Cebolla: ${cebolla:.2f}")
+    print(f"- Salsa: ${salsa:.2f}")
+    print(f"- Empaque: ${empaque:.2f}")
+    print(f"Total costos directos: ${costo_directo:.2f}\n")
+    
+    print("** Costos Indirectos por Hamburguesa: **")
+    print(f"- Alquiler: ${alquiler / hamburguesas_mes:.2f}")
+    print(f"- Energía: ${energia / hamburguesas_mes:.2f}")
+    print(f"- Salarios: ${salarios / hamburguesas_mes:.2f}")
+    print(f"Total costos indirectos: ${costo_indirecto_por_hamburguesa:.2f}\n")
+    
+    print(f"** COSTO TOTAL POR HAMBURGUESA: ${costo_total:.2f} **")
+
+# Ejecutar
+calcular_costo_hamburguesa()
